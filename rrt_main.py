@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 #Initialize a tree
-tree = rrt.tree(50, 50, 100, 1, 0, 100, 0, 100)
+tree = rrt.tree(50, 50, 1000, 1, 0, 100, 0, 100)
 
 
 #set up the first central node
@@ -36,7 +36,7 @@ for node in tree.nodeAll:
     y = node.yPos
     xlist.append(x)
     ylist.append(y)
-
+"""
 fig, ax = plt.subplots(figsize=(1,1), constrained_layout = True)
 ax.scatter(xlist,ylist)
 
@@ -45,9 +45,9 @@ ax.set_ylabel('y')
 ax.set_title('Points')
 fig.set_facecolor('lightsteelblue')
 plt.show()
-
-
 """
+
+
 for i in tree.EdgeAll:
     print("newSet")
     print(i[0])
@@ -55,7 +55,7 @@ for i in tree.EdgeAll:
 
     plt.plot([[i[0][0],[i[1][0],i[1][1],i[0][1]]]], 'b-')
 plt.show()
-"""
+
 
 
 

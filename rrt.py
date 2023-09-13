@@ -46,19 +46,10 @@ def getDistance(nodeA, nodeB):
     dis = math.sqrt((nodeA.xPos - nodeB.xPos)**2 + (nodeA.yPos - nodeB.yPos)**2)
     return dis
 
-def getAngle(nodeA, nodeB):
-    sinVal= abs(nodeA.xPos - nodeB.xPos) / getDistance(nodeA, nodeB)
-    arcsine = math.asin(sinVal)
-
-    # Convert the result to degrees if needed
-    degrees = math.degrees(arcsine)
-
-    return degrees
-
 def new_vertex(q_near, q_rand, stepSize):
     v = [q_rand.xPos - q_near.xPos, q_rand.yPos - q_near.yPos]
     unitV = v/np.linalg.norm(v)
-    new_vert_var= unitV
+    new_vert_var= unitV*stepSize
     newVertNode_vec = [q_near.xPos + new_vert_var[0], q_near.yPos + new_vert_var[1]]
     newVertNode = node(newVertNode_vec[0], newVertNode_vec[1], q_near)
     
@@ -72,6 +63,7 @@ def nearest_vertex(qrand, t):
         dis = getDistance(node, qrand)
         if dis < distance_min:
             nearest_vertex = node
+            distance_min = dis
     
     return nearest_vertex
 
